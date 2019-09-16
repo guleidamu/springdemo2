@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.businessOracle.businessOracle.mapper.StudentMapper">
+    <resultMap id="sysUserMap" type="com.businessOracle.businessOracle.data.vo.StudentVo">
+        <result column="sno" property="studentNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="sname" property="studentName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="ssex" property="studentSex" jdbcType="VARCHAR" javaType="java.lang.String" />
+        <result column="class" property="classNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="sbirthday" property="studentBirthday" jdbcType="DATE" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="getStudentByName" resultMap="sysUserMap" parameterType="java.lang.String">
+        select * from student
+        where 1 = 1
+        <if test="name != null and name !=''">
+            and sname like '%'||#{name,jdbcType=VARCHAR}||'%'
+        </if>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springdemo.businessSchool.mapper.PermissionMapper">
+    <!--<resultMap id="sysUserMap" type="com.example.springdemo.businessSchool.data.vo.StudentVo">-->
+        <!--<result column="sno" property="sno" jdbcType="INTEGER" javaType="java.lang.Integer"/>-->
+        <!--<result column="sname" property="sname" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
+        <!--<result column="ssex" property="ssex" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
+        <!--<result column="calssno" property="calssno" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
+        <!--<result column="sbirthday" property="sbirthday" jdbcType="DATE" javaType="java.util.Date"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="getStudentByName" resultMap="sysUserMap" parameterType="java.lang.String">-->
+        <!--select * from student-->
+        <!--where 1 = 1-->
+        <!--<if test="sname != null and sname !=''">-->
+            <!--and sname = #{sname,jdbcType=VARCHAR}-->
+        <!--</if>-->
+    <!--</select>-->
+
+
+    <select id="getEmpById" resultType="com.example.springdemo.businessSchool.data.vo.Emp">
+        select emp_id as empId,
+        emp_name as empName,
+        birthday as birthday,
+        emp_pic_file_index_no as empPictureIndex
+        from emp
+        where emp_id = #{empId,jdbcType=INTEGER}
+    </select>
+
+    <select id="getSysUserById" resultType="com.example.springdemo.businessSchool.data.vo.SysUser">
+        select user_id as userId,
+        user_name as userName,
+        emp_id as empId,
+        role as role
+        from sys_user
+        where user_id = #{sysUserId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deletePermission">
+        delete from permission
+        where sysUser_Id = #{sysUserId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="addSysUserPermission" parameterType="java.util.List">
+        insert into permission (sysUser_Id,actInf_Id,business)
+        values 
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.sysUserId},
+            #{item.actInfId},
+            #{item.business}
+            )
+        </foreach>
+    </insert>
+
+    <select id="getPermissionBySysUserId" resultType="com.example.springdemo.businessSchool.data.entity.Permission">
+        select p.sysUser_Id as sysUserId,
+        p.actInf_Id as actInfId,
+        p.business as business,
+        ai.act_cd as actCd,
+        ai.act_nm as actNm,
+        b.name as businessName
+        from permission p
+        left join business b on p.business = b.Id
+        left join act_inf ai on p.actInf_Id = ai.id
+        where sysUser_Id = #{sysUserId,jdbcType = INTEGER}
+    </select>
+
+
+
+</mapper>

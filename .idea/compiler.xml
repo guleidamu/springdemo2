@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="business-business" />
+        <module name="business-school" />
+        <module name="businessOracle" />
+        <module name="config" />
+        <module name="eureka" />
+        <module name="gateway" />
+        <module name="serverzipkin" />
+        <module name="service-hi" />
+        <module name="servicefeign" />
+        <module name="servicemiya" />
+        <module name="serviceribbion" />
+        <module name="servicezuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="business-ribbon" target="1.8" />
+      <module name="service-feign" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="business-business" options="-parameters" />
+      <module name="business-ribbon" options="-parameters" />
+      <module name="business-school" options="-parameters" />
+      <module name="businessOracle" options="-parameters" />
+      <module name="config" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="serverzipkin" options="" />
+      <module name="service-feign" options="" />
+      <module name="service-hi" options="" />
+      <module name="servicemiya" options="-parameters" />
+      <module name="servicezuul" options="-parameters" />
+      <module name="springdemo2" options="-parameters" />
+    </option>
+  </component>
+</project>
