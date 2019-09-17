@@ -11,10 +11,18 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
+import org.slf4j.Logger;
 
 @Slf4j
 @Api(description = "学生信息接口")
@@ -24,6 +32,14 @@ public class StudentController {
 
     @Resource
     private StudentService studentService;
+
+    @Value("${file.upload}")
+    private String filePath;
+
+    @Value("${file.upload}")
+    private String downLoadFilePath;
+
+//   private static final Logger log = LoggerFactory.getLogger(StudentController.class);
 
     @LogRecord
     @ApiOperation(value = "通过学生名称获取学生信息", notes = "新增学生名称获取学生信息1")
@@ -38,6 +54,36 @@ public class StudentController {
         Result result = new Result();
         result.setData(studentService.getDynamicStudent(dynamicDto));
         return result;
+    }
+
+    @PostMapping("/upload")
+    public Result upload(@RequestParam("file")MultipartFile file){
+        if(file.isEmpty()){
+            return ResultBuilder.error("500","上传失败，请重新选择");
+        }
+        String fileName = file.getOriginalFilename();
+        File dest = new File(filePath+fileName);
+        try {
+            file.transferTo(dest);
+            log.info("上传成功");
+            return ResultBuilder.success("上传成功");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ResultBuilder.error("500","上传失败");
+    }
+
+
+    @RequestMapping("/downloadFile")
+    public void download(HttpServletResponse response) throws Exception{
+     String downloadFilePath = downLoadFilePath;
+     String fileName = "test";
+
+//     File file = new File(downloadFilePath);
+//     if(file.exists()){
+//         response.setContentTy
+//     }
     }
 
 
