@@ -8,16 +8,19 @@ spring:
     allow-bean-definition-overriding: true
 
   profiles:
-    active: native
+    active: native #active配置选择厦门的cloud.config.server.get或者cloud.config.server.native
   cloud:
     config:
       server:
         native:
-          search-locations: classpath:/config/
+          search-locations: classpath:/config/{profile} #{profile} maps to "spring.profiles.active" on the client (comma separated list); and
+        git:
+          uri:
 
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
