@@ -4,7 +4,9 @@ import com.businessOracle.businessOracle.data.entity.DcsManualTask;
 import com.businessOracle.businessOracle.data.entity.Dept;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class jdbc {
@@ -121,11 +123,18 @@ public class jdbc {
     public static void main(String args[]) {
 //        String selectSql = "select * from dept";
 //        selectDept(selectSql);
-//        String insertSql = "insert into dept (deptNo,Dname,Loc) values('49' , 'damu','miaoqian')";
-//        addDept(insertSql);
+        Date date = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+        SimpleDateFormat dateSdf = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        System.out.println(dateSdf.format(new Date()));// new Date()为获取当前系统时间
+        long dateString = date.getTime();
+        String insertSql = "insert into dept (deptNo,Dname,Loc ,insertTime) values('38' , 'damu','miaoqian',";
+        insertSql += "to_date('" +dateSdf.format(new Date()) + "','YYYY-MM-DD'))";
+        addDept(insertSql);
 //        String deleteSql = "delete from dept where deptNo = '58'";
 //        deleteDept(deleteSql);
-        String updateSql = "update dept set Dname='pigu' where deptNo= 77";
-        updateDept(updateSql);
+//        String updateSql = "update dept set Dname='pigu' where deptNo= 77";
+//        updateDept(updateSql);
     }
 }
