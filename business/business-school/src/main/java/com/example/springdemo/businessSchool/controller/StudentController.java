@@ -3,6 +3,7 @@ package com.example.springdemo.businessSchool.controller;
 import com.example.springdemo.businessSchool.data.dict.LogRecord;
 import com.example.springdemo.businessSchool.data.dto.DynamicDto;
 import com.example.springdemo.businessSchool.data.dto.SearchStudentSearchDto;
+import com.example.springdemo.businessSchool.data.entity.Student;
 import com.example.springdemo.businessSchool.data.vo.StudentVo;
 import com.example.springdemo.businessSchool.response.Result;
 import com.example.springdemo.businessSchool.response.ResultBuilder;
@@ -57,7 +58,14 @@ public class StudentController {
     }
 
     @PostMapping("/upload")
-    public Result upload(@RequestParam("file")MultipartFile file){
+    public Result upload(@RequestBody MultipartFile file){
+
+        return ResultBuilder.error("500","上传失败");
+    }
+
+
+    @PostMapping("/addUser")
+    public Result addUser(@RequestParam("file")MultipartFile file){
         if(file.isEmpty()){
             return ResultBuilder.error("500","上传失败，请重新选择");
         }
@@ -84,6 +92,11 @@ public class StudentController {
 //     if(file.exists()){
 //         response.setContentTy
 //     }
+    }
+
+    @PostMapping("/addStudent")
+    public void addStudent(@RequestBody Student student){
+        studentService.addStudent(student);
     }
 
 

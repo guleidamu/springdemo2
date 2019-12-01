@@ -1,6 +1,7 @@
 package com.businessOracle.businessOracle.controller;
 
 import com.businessOracle.businessOracle.data.dto.SearchStudentDto;
+import com.businessOracle.businessOracle.data.entity.Student;
 import com.businessOracle.businessOracle.data.vo.StudentVo;
 import com.businessOracle.businessOracle.service.StudentService;
 import com.github.pagehelper.PageInfo;
@@ -19,7 +20,7 @@ import java.util.List;
 @Slf4j
 @Api(description = "学生信息接口")
 @RestController
-@RequestMapping(value = "/Oracle")
+    @RequestMapping(value = "/Oracle")
 public class StudentController {
 
     @Resource
@@ -29,5 +30,11 @@ public class StudentController {
     @PostMapping(value = "/getStudent")
     public List<StudentVo> getStudent(@Valid @RequestBody SearchStudentDto searchStudentDto) {
         return studentService.getStudentByName(searchStudentDto);
+    }
+
+
+    @PostMapping(value = "/addStudent")
+    public int addStudent(@Valid @RequestBody Student student) {
+        return studentService.insertStudent(student);
     }
 }

@@ -18,4 +18,15 @@
     </select>
 
 
+    <insert id="insertStudent">
+        insert into student(sno, sname, ssex)
+        values(#{studentNo, jdbcType=VARCHAR}, #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertCourse">
+        insert into course(cno, cname, tno)
+        values(#{courseNo, jdbcType=VARCHAR}, #{courseName, jdbcType=VARCHAR}, #{teacherNo, jdbcType=VARCHAR})
+    </insert>
+
+
 </mapper>

@@ -4,7 +4,8 @@ spring:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     username: scott
     password: tiger
-    url: jdbc:oracle:thin:@192.168.43.9:1521:ORCL
+    url: jdbc:oracle:thin:@127.0.0.1:1521:ORCL
+#    url: jdbc:oracle:thin:@192.168.43.9:1521:ORCL
   redis:
     database: 0
     host: localhost

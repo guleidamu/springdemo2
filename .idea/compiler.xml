@@ -12,6 +12,7 @@
         <module name="config" />
         <module name="eureka" />
         <module name="gateway" />
+        <module name="learnModel" />
         <module name="serverzipkin" />
         <module name="service-hi" />
         <module name="servicefeign" />
@@ -34,6 +35,7 @@
       <module name="config" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="learnModel" options="-parameters" />
       <module name="serverzipkin" options="" />
       <module name="service-feign" options="" />
       <module name="service-hi" options="" />

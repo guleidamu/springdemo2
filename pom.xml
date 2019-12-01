@@ -26,6 +26,7 @@
         <module>gateway</module>
         <module>businessOracle</module>
         <module>learning</module>
+        <module>learnModel</module>
     </modules>
 
     <dependencies>
