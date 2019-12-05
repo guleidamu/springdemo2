@@ -27,6 +27,13 @@
         <!--<version>0.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
 
+        <!--依赖对应的模块，方便引入该maven下的类，点击可查看对应的maven模块-->
+        <dependency>
+            <groupId>com.example.springdemo.buisiness</groupId>
+            <artifactId>business-school</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>

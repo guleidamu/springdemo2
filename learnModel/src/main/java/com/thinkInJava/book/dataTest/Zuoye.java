@@ -5,8 +5,13 @@ import java.util.Random;
 public class Zuoye {
     public static void main(String[] args) {
         Zuoye zuoye = new Zuoye();
+        Zuoye zuoye1 = new Zuoye();
         zuoye.No1();
         zuoye.No2();
+        zuoye.toString();
+        System.out.println(zuoye.toString());
+        System.out.println(zuoye);
+        System.out.println(zuoye1);
     }
 
     private void No1() {

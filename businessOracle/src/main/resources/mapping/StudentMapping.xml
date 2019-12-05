@@ -4,9 +4,31 @@
     <resultMap id="sysUserMap" type="com.businessOracle.businessOracle.data.vo.StudentVo">
         <result column="sno" property="studentNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result column="sname" property="studentName" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result column="ssex" property="studentSex" jdbcType="VARCHAR" javaType="java.lang.String" />
+        <!--<result column="ssex" property="studentSex" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+        <result column="ssex" property="studentSex"
+                typeHandler="com.example.springdemo.businessSchool.data.dict.handle.EnumKeyTypeHandler" />
         <result column="class" property="classNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result column="sbirthday" property="studentBirthday" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="sbirthday" property="studentBirthday" jdbcType="DATE" javaType="java.lang.String"/>
+        <result column="createTime" property="createTime" jdbcType="DATE"  javaType="java.util.Date"/>
+        <result column="updateTime" property="updateTime" jdbcType="DATE"  javaType="java.lang.String"/>
+    </resultMap>
+
+    <resultMap id="schoolClassMap" type="com.businessOracle.businessOracle.data.vo.SchoolClassVo">
+        <result column="classNo" property="classNo" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="className" property="className" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="address" property="address" jdbcType="DATE" javaType="java.lang.String"/>
+        <result column="teacherName" property="teacherName" jdbcType="DATE"  javaType="java.lang.String"/>
+        <collection property="studentList" ofType="com.businessOracle.businessOracle.data.vo.StudentVo">
+            <result column="sno" property="studentNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <result column="sname" property="studentName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <!--<result column="ssex" property="studentSex" jdbcType="VARCHAR" javaType="java.lang.String" />-->
+            <result column="ssex" property="studentSex"
+                    typeHandler="com.example.springdemo.businessSchool.data.dict.handle.EnumKeyTypeHandler" />
+            <result column="sschoolclass" property="studentSchoolClass" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <result column="sbirthday" property="studentBirthday" jdbcType="DATE" javaType="java.lang.String"/>
+            <result column="createTime" property="createTime" jdbcType="DATE"  javaType="java.util.Date"/>
+            <result column="updateTime" property="updateTime" jdbcType="DATE"  javaType="java.lang.String"/>
+        </collection>
     </resultMap>
 
     <select id="getStudentByName" resultMap="sysUserMap" parameterType="java.lang.String">
@@ -17,16 +39,48 @@
         </if>
     </select>
 
-
-    <insert id="insertStudent">
-        insert into student(sno, sname, ssex)
-        values(#{studentNo, jdbcType=VARCHAR}, #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
+    <sql id='APP_CUSTOM_ID_SEQ'>STUDENT_STUID_SEQ.nextval</sql>
+    <insert id="insertStudent" parameterType="com.businessOracle.businessOracle.data.entity.Student">
+        <selectKey keyProperty="studentNo" resultType="int" order="BEFORE">
+            select <include refid="APP_CUSTOM_ID_SEQ" /> from dual
+        </selectKey>
+        insert into student(sno, sname, ssex, sbirthday, createTime ,updateTime)
+        values(#{studentNo, jdbcType=VARCHAR},
+         #{studentName, jdbcType=VARCHAR},
+        #{studentSex, jdbcType=VARCHAR},
+        #{studentBirthday, jdbcType=DATE},
+        to_date(#{createTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss'),
+        to_date(#{updateTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss'))
     </insert>
 
     <insert id="insertCourse">
         insert into course(cno, cname, tno)
         values(#{courseNo, jdbcType=VARCHAR}, #{courseName, jdbcType=VARCHAR}, #{teacherNo, jdbcType=VARCHAR})
     </insert>
+
+    <select id="selectSchoolClass" resultMap="schoolClassMap" parameterType="java.lang.String">
+        select sc.classNo,
+        sc.className,
+        sc.address,
+        sc.teacherName,
+        st.sno,
+        st.sname,
+        st.ssex,
+        st.sschoolclass,
+        st.sbirthday,
+        st.createTime,
+        st.updateTime
+        from schoolClass sc
+        left join student st on sc.classno = st.sschoolclass
+        where 1 = 1
+        <if test="teacherName != null and teacherName !=''">
+            and sc.teacherName like '%'||#{teacherName,jdbcType=VARCHAR}||'%'
+        </if>
+    </select>
+
+
+
+
 
 
 </mapper>
