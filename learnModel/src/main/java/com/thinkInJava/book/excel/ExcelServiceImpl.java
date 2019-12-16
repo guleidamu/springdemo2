@@ -12,7 +12,7 @@
 //    @Resource
 //    private ExcelUtil excelUtil;
 //
-//    public List readExcel(MultipartFile file, Integer nameRow, Integer valueRow) {
+//    public List readExcel(MultipartFile file, IntegerAndInt nameRow, IntegerAndInt valueRow) {
 //
 //        List list = new ArrayList();
 //

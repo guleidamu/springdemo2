@@ -80,12 +80,20 @@ public class ExcelUtil {
 
             case NUMERIC: //字段类型
                 log.info("数字类型" + cell.getCellStyle().getDataFormat());
-                if(HSSFDateUtil.isCellDateFormatted(cell)){
+//               if(cell.getCellStyle().getDataFormat() == 184){
+//                //处理自定义日期格式：m月d日(通过判断单元格的格式id解决，id的值是184)
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                double value = cell.getNumericCellValue();
+//                Date date = org.apache.poi.ss.usermodel.DateUtil.getJavaDate(value);
+//                result = sdf.format(date);
+//            }
+               if(HSSFDateUtil.isCellDateFormatted(cell)){
                     SimpleDateFormat sdf = null;
                     if(cell.getCellStyle().getDataFormat() == HSSFDataFormat.getBuiltinFormat("h:mm")){
                         sdf = new SimpleDateFormat("HH:mm");
                     }else {//日期
-                        sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                        sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     }
                     Date date = cell.getDateCellValue();
                     result = sdf.format(date);
@@ -100,7 +108,8 @@ public class ExcelUtil {
                     double value = cell.getNumericCellValue();
                     Date date = org.apache.poi.ss.usermodel.DateUtil.getJavaDate(value);
                     result = sdf.format(date);
-                }else {
+                }
+                else {
                     double value = cell.getNumericCellValue();
                     CellStyle style = cell.getCellStyle();
                     NumberFormat nf = NumberFormat.getInstance();

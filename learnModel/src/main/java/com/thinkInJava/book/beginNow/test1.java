@@ -9,7 +9,7 @@ public class test1 {
         try {
             vaint = Integer.parseInt(v1);
             String v2 = "666 ";
-//            int vaint2 = Integer.parseInt(v2);
+//            int vaint2 = IntegerAndInt.parseInt(v2);
             String v3 = v2.trim();
             v4 = "666k";
             String v5 = "";

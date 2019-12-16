@@ -72,6 +72,9 @@ public class ExcelController {
 //            return
         }
         HSSFWorkbook workbook = this.getHSSWorkbook(sheetName, taskId, taskName, values, wb);
+        OutputStream outputStream ;
+        OutputStream oot;
+        outputStream = response.getOutputStream();
         OutputStream os = response.getOutputStream();
         log.info("\"Content-Disposition\"","\"attachment; filename=" +taskName +".xls\"");
         try {

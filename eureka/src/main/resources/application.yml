@@ -7,10 +7,12 @@ spring:
 
 eureka:
   instance:
-    hostname: sct-eureka
+    hostname: sct-eureka #Windows系统配置host C:\Windows\System32\drivers\etc hosts文件。设置 127.0.0.1 sct-eureka,则sct-eureka代表127.0.0.1
     prefer-ip-address: true
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#      defaultZone: http://localhost:${server.port}/eureka/
+
