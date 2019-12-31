@@ -20,3 +20,13 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
+  mail:
+    host: smtp.qq.com
+    username: 364632363@qq.com
+    password: utzsdqvrstrncafj #开启PoP3之后设置的客户授权码
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true #一定要开启ssl,不然会503 验证失败的

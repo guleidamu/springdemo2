@@ -7,6 +7,7 @@ import com.businessOracle.businessOracle.data.vo.StudentVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface StudentMapper {
     ArrayList<StudentVo> getStudentByName(@Param("name") String name);
@@ -14,6 +15,12 @@ public interface StudentMapper {
     int insertStudent(Student student);
 
     int insertCourse(Course course);
+
+    int studentSeq();
+
+    int insertStudentBatch(List<Student> list);
+
+    int insertStudentBatchNotSeq(List<Student> list);
 
     ArrayList<SchoolClassVo> selectSchoolClass(@Param("teacherName") String teacherName);
 }

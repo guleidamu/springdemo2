@@ -29,7 +29,7 @@ public class Son extends Father{
         log.info("我是son的方法" + Thread.currentThread().getStackTrace()[1].getMethodName() + leve1Param);
     }
 
-//    public String leave1(String leve1Param){
+//    public StringMethod leave1(StringMethod leve1Param){
 //        log.info("我是son的方法" + Thread.currentThread().getStackTrace()[1].getMethodName() + "leve1Param");
 //        return leve1Param;
 //    }

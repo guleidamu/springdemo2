@@ -38,6 +38,10 @@
             and sname like '%'||#{name,jdbcType=VARCHAR}||'%'
         </if>
     </select>
+    
+    <select id="studentSeq" resultType="java.lang.Integer">
+        select <include refid="APP_CUSTOM_ID_SEQ" /> from dual
+    </select>
 
     <sql id='APP_CUSTOM_ID_SEQ'>STUDENT_STUID_SEQ.nextval</sql>
     <insert id="insertStudent" parameterType="com.businessOracle.businessOracle.data.entity.Student">
@@ -53,6 +57,42 @@
         to_date(#{updateTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss'))
     </insert>
 
+    <insert id="insertStudentBatch"  parameterType="java.util.List" useGeneratedKeys="false">
+        insert into student(sno, sname, ssex, sbirthday, createTime, updateTime)
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            ( select
+            #{item.studentNo} sno,
+            #{item.studentName} sname,
+            #{item.studentSex, jdbcType=VARCHAR} ssex,
+            #{item.studentBirthday} sbirthday,
+            to_date(#{item.createTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss') createTime,
+            to_date(#{item.updateTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss') updateTime
+            from dual
+            )
+        </foreach>
+
+    </insert>
+
+
+    <insert id="insertStudentBatchNotSeq"  parameterType="java.util.List" useGeneratedKeys="false">
+        insert into student(sno, sname, ssex, sbirthday, createTime, updateTime)
+        select STUDENT_STUID_SEQ.nextval, a.* FROM (
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            select
+            #{item.studentName} sname,
+            #{item.studentSex, jdbcType=VARCHAR} ssex,
+            #{item.studentBirthday} sbirthday,
+            to_date(#{item.createTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss') createTime,
+            to_date(#{item.updateTime, jdbcType=VARCHAR}, 'yyyy-mm-dd hh24:mi:ss') updateTime
+            from dual
+
+        </foreach>
+        ) a
+
+    </insert>
+        <!--#{item.studentBirthday},-->
+        <!--to_date(#{item.createTime}, 'yyyy-mm-dd hh24:mi:ss'), , sbirthday, createTime ,updateTime-->
+        <!--to_date(#{item.updateTime}, 'yyyy-mm-dd hh24:mi:ss'))-->
     <insert id="insertCourse">
         insert into course(cno, cname, tno)
         values(#{courseNo, jdbcType=VARCHAR}, #{courseName, jdbcType=VARCHAR}, #{teacherNo, jdbcType=VARCHAR})
@@ -77,10 +117,5 @@
             and sc.teacherName like '%'||#{teacherName,jdbcType=VARCHAR}||'%'
         </if>
     </select>
-
-
-
-
-
 
 </mapper>

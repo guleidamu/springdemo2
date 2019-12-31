@@ -29,4 +29,8 @@ public class Student implements Serializable {
     private String teacherNo;
 
     private String param;
+
+    private Integer no1;
+
+    private Integer no2;
 }

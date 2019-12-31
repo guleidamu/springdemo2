@@ -15,8 +15,8 @@
 //@Slf4j
 //public class ExcelUtil {
 //
-//    public static List<Map<String, Object>> readExcel(MultipartFile file, int nameRow, int valueRow) throws IOException{
-//        List<Map<String,Object>> Row = new ArrayList<Map<String,Object>>();
+//    public static List<Map<StringMethod, Object>> readExcel(MultipartFile file, int nameRow, int valueRow) throws IOException{
+//        List<Map<StringMethod,Object>> Row = new ArrayList<Map<StringMethod,Object>>();
 //        try{
 //        Workbook workbook = null;
 //
@@ -37,7 +37,7 @@
 //                continue;
 //            }
 //            int colum = row0.getPhysicalNumberOfCells();
-//            ArrayList<String> keys = new ArrayList<String>();
+//            ArrayList<StringMethod> keys = new ArrayList<StringMethod>();
 //            for(int i = 0; i<colum; i++){
 //                Cell cell = row0.getCell(i);
 //                log.info("row0.getCell:" + i + cell.toString());
@@ -53,7 +53,7 @@
 //                }
 //
 //                //循环列cell
-//                Map<String, Object> arrCell = new HashMap<String, Object>();
+//                Map<StringMethod, Object> arrCell = new HashMap<StringMethod, Object>();
 //                for (int cellNum = 0; cellNum< colum; cellNum++){
 //                    Cell cell = row.getCell(cellNum);
 //                    if(cell == null){
@@ -73,8 +73,8 @@
 //        return Row;
 //    }
 //
-//    private static String getValue(Cell cell){
-//        String result = new String();
+//    private static StringMethod getValue(Cell cell){
+//        StringMethod result = new StringMethod();
 //        switch (cell.getCellType()){
 //            case NUMERIC: //字段类型
 //                log.info("数字类型" + cell.getCellStyle().getDataFormat());

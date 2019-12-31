@@ -9,7 +9,6 @@ import com.businessOracle.businessOracle.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service("studentServiceImplTest")
 public class StudentServiceImplTest implements StudentService {
@@ -29,7 +28,37 @@ public class StudentServiceImplTest implements StudentService {
     }
 
     @Override
+    public int insertStudentMethod(Student student) {
+        return 0;
+    }
+
+    @Override
+    public int insertStudentList(Student student) {
+        return 0;
+    }
+
+    @Override
+    public int insertStudentBatch(Student student) {
+        return 0;
+    }
+
+    @Override
+    public int insertStudentBatchNotSeq(Student student) {
+        return 0;
+    }
+
+    @Override
+    public int insertStudentBatchThreadAndNotSeq(Student student) {
+        return 0;
+    }
+
+    @Override
     public int insertCourse(Course course) {
+        return 0;
+    }
+
+    @Override
+    public int sendMail() {
         return 0;
     }
 

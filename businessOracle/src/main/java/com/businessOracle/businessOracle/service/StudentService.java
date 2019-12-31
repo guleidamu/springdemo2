@@ -15,7 +15,19 @@ public interface StudentService {
 
     int insertStudent(Student student);
 
+    int insertStudentMethod(Student student);
+
+    int insertStudentList(Student student);
+
+    int insertStudentBatch(Student student);
+
+    int insertStudentBatchNotSeq(Student student);
+
+    int insertStudentBatchThreadAndNotSeq(Student student);
+
     int insertCourse(Course course);
+
+    int sendMail();
 
     ArrayList<SchoolClassVo> querySchoolClassAndStudents(String teacherName);
 }

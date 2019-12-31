@@ -26,19 +26,19 @@
 //public class ExcelController {
 //
 //    @PostMapping(value= "/addExcel")
-//    public Result getFile(MultipartFile file, String id){
+//    public Result getFile(MultipartFile file, StringMethod id){
 //        List list = new ArrayList();
 //        return ResultBuilder.success();
 //    }
 //
 //    @PostMapping(value = "/exportExcel")
 //    public void exportExcel(@RequestBody Map map, HttpServletResponse response) throws IOException{
-//        String taskId = (String)map.get("taskId");
-//        String sheetName = "";
-//        String taskName = "taskName";
+//        StringMethod taskId = (StringMethod)map.get("taskId");
+//        StringMethod sheetName = "";
+//        StringMethod taskName = "taskName";
 //        if(null != taskId)
 //        {}
-//        String[][] values = null;
+//        StringMethod[][] values = null;
 //        HSSFWorkbook wb = null;
 //        if("".equals(sheetName) || sheetName ==null){
 ////            return
@@ -48,12 +48,12 @@
 //        log.info("\"Content-Disposition\"","\"attachment; filename=" +taskName +".xls\"");
 //        try {
 //            response.reset();
-//            String headkey = "\"Content-Disposition\"";
-//            String headvalue = "\"attachment; filename=" + taskName + ".xls\"";
+//            StringMethod headkey = "\"Content-Disposition\"";
+//            StringMethod headvalue = "\"attachment; filename=" + taskName + ".xls\"";
 //            System.out.println("headKey:" + headkey);
 //            System.out.println("headvalue" + headvalue);
 //            response.setHeader("Content-Disposition", "attachment; filename=" + taskName + ".xls");
-//            String name = response.getHeader("Content-Disposition");
+//            StringMethod name = response.getHeader("Content-Disposition");
 //            log.info("name: "+ name);
 //            response.setContentType("application/octet-stream; charset=utf-8");
 //            workbook.write(response.getOutputStream());
@@ -65,7 +65,7 @@
 //        }
 //    }
 //
-//    public HSSFWorkbook getHSSWorkbook(String sheetName, String taskId, String taskName, String[][] values, HSSFWorkbook wb){
+//    public HSSFWorkbook getHSSWorkbook(StringMethod sheetName, StringMethod taskId, StringMethod taskName, StringMethod[][] values, HSSFWorkbook wb){
 //        //第一步，创建一个HSSFWorkbook，对应一个Excel文件
 //        if(wb == null){
 //            wb = new HSSFWorkbook();
