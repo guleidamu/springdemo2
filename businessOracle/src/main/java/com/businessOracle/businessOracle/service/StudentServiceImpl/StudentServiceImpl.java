@@ -36,6 +36,7 @@ public class StudentServiceImpl implements StudentService {
     /**
      * 一条插入一次，遍历n次
      * 插入100000条数据总共耗时：66.712秒
+     *
      * @param student
      * @return
      */
@@ -69,7 +70,8 @@ public class StudentServiceImpl implements StudentService {
     /**
      * 多线程：插入100000条，单个线程处理的数据量100条,一条条插入。总共耗时：24.383秒
      * 多线程：插入100000条数据,单个线程处理的数据量100条，一起批量插入。 总共耗时：3.035秒
-     *  多线程：插入500000条数据,单个线程处理的数据量500条,一起批量插入总共耗时：17.328秒
+     * 多线程：插入500000条数据,单个线程处理的数据量500条,一起批量插入总共耗时：17.328秒
+     *
      * @param student
      * @return
      */
@@ -121,9 +123,9 @@ public class StudentServiceImpl implements StudentService {
         log.info("批量插入结束时间:" + df.format(endTime));
         long endTimeLong = endTime.getTime();
         long beginTimeLong = beginTime.getTime();
-        float end = (float) (endTimeLong - beginTimeLong) /1000;
-        double doubleEnd = (double) (endTimeLong - beginTimeLong) /1000;
-        DecimalFormat dataFormat=new DecimalFormat("0.00");
+        float end = (float) (endTimeLong - beginTimeLong) / 1000;
+        double doubleEnd = (double) (endTimeLong - beginTimeLong) / 1000;
+        DecimalFormat dataFormat = new DecimalFormat("0.00");
         float interval = (float) (endTime.getTime() - beginTime.getTime()) / 1000;
         log.info("插入" + row + "条数据,每次插入" + batchCount + "条,总共耗时：" + interval + "秒");
         return total;
@@ -161,7 +163,8 @@ public class StudentServiceImpl implements StudentService {
 
     /**
      * 一条条获取序列号，new n个对象，分批次每次c条，插入数据库。正常
-     *插入100001条数据,每次插入150条,总共耗时：30.772秒
+     * 插入100001条数据,每次插入150条,总共耗时：30.772秒
+     *
      * @param student
      * @return
      */
@@ -221,7 +224,7 @@ public class StudentServiceImpl implements StudentService {
         Date beginTime = new Date();
         List<Student> studentList = new ArrayList<>();
         int total = 0;
-        int row = 100000;
+        int row = 1000000;
         int batchCount = 150;
         int batchLastIndex = batchCount;
         for (int i = 0; i < row; i++) {
@@ -257,9 +260,9 @@ public class StudentServiceImpl implements StudentService {
         log.info("批量插入结束时间:" + df.format(endTime));
         long endTimeLong = endTime.getTime();
         long beginTimeLong = beginTime.getTime();
-        float end = (float) (endTimeLong - beginTimeLong) /1000;
-        double doubleEnd = (double) (endTimeLong - beginTimeLong) /1000;
-        DecimalFormat dataFormat=new DecimalFormat("0.00");
+        float end = (float) (endTimeLong - beginTimeLong) / 1000;
+        double doubleEnd = (double) (endTimeLong - beginTimeLong) / 1000;
+        DecimalFormat dataFormat = new DecimalFormat("0.00");
         float interval = (float) (endTime.getTime() - beginTime.getTime()) / 1000;
         log.info("插入" + row + "条数据,每次插入" + batchCount + "条,总共耗时：" + interval + "秒");
         return total;

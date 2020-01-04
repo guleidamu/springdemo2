@@ -3,7 +3,6 @@ package com.example.springdemo.businessSchool.config;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -23,8 +22,6 @@ public class RedisConfig extends CachingConfigurerSupport {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private RedisTemplate redisTemplate;
-
-
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
@@ -40,11 +37,9 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
     }
-
-
         public void setKey(String key, String value){
         ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
-        ops.set(key,value,1, TimeUnit.MINUTES);//1分钟后过期
+        ops.set(key,value,30, TimeUnit.SECONDS);//30秒后过期
     }
 
     public String getValue(String key){

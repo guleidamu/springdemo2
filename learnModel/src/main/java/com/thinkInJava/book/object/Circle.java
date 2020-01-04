@@ -7,7 +7,6 @@ public class Circle extends Shape {
     private String rightHeight;
 
     private void example(){
-
         this.erase();
         this.height();
         rightHeight = this.white;

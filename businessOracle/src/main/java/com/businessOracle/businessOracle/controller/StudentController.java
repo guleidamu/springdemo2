@@ -68,7 +68,7 @@ public class StudentController {
         return ResultBuilder.success(studentServiceImpl.insertStudentBatch(student));
     }
 
-    @PostMapping(value = "/insertStudentMethod")
+    @PostMapping(value = "/insertStudentThread")
     public Result insertStudentMethod(@Valid @RequestBody Student student) {
         return ResultBuilder.success(studentServiceImpl.insertStudentMethod(student));
     }

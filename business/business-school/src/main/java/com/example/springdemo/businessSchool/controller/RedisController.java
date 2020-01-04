@@ -1,20 +1,10 @@
 package com.example.springdemo.businessSchool.controller;
-
-
-import java.util.concurrent.TimeUnit;
-
 import com.example.springdemo.businessSchool.config.RedisConfig;
-import com.example.springdemo.businessSchool.data.entity.User;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @Api(value = "redis调试测试")
@@ -28,10 +18,9 @@ public class RedisController {
     public String fzpString() {
         Object object = redisConfig.getValue("chanzui");
         if ((null == object) || ("" == object)){
-            redisConfig.setKey("chanzui", "kongkan");
+            redisConfig.setKey("chuanZhi", "kongkan");
         }
-        return redisConfig.getValue("chanzui");
-
+        return redisConfig.getValue("chuanZhi");
     }
 
 

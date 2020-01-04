@@ -3,9 +3,6 @@ package com.thinkInJava.book.object;
 public class Shape {
 
     public String father = "important";
-
-
-
     private String color = "white";
 
     //private 修饰的方法，其他类引用不了，即使是子类
