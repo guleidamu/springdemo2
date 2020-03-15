@@ -10,6 +10,7 @@
         <module name="business-school" />
         <module name="businessOracle" />
         <module name="config" />
+        <module name="eurek-8002" />
         <module name="eureka" />
         <module name="gateway" />
         <module name="learnModel" />
@@ -33,6 +34,7 @@
       <module name="business-school" options="-parameters" />
       <module name="businessOracle" options="-parameters" />
       <module name="config" options="-parameters" />
+      <module name="eurek-8002" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="learnModel" options="-parameters" />

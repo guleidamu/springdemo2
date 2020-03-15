@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +30,7 @@ import org.slf4j.Logger;
 @Api(description = "学生信息接口")
 @RestController
 @RequestMapping(value = "/student")
+@EnableCaching
 public class StudentController {
 
     @Resource
@@ -99,5 +101,9 @@ public class StudentController {
         studentService.addStudent(student);
     }
 
+    @PostMapping("/getStudentByRedis")
+    public Result getStudentByRedis(@RequestBody SearchStudentSearchDto searchStudentDto){
+        return ResultBuilder.success(studentService.getStudentByRedis(searchStudentDto));
+    }
 
 }

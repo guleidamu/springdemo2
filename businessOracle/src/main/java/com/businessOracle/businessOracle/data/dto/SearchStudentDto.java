@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @ApiModel("学生查询条件")
-public class SearchStudentDto {
+public class SearchStudentDto extends BaseSearchDto{
 
     @ApiModelProperty(value = "学生名称")
     @NotNull(message = "学生名称不能为空")

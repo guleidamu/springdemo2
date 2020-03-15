@@ -2,10 +2,11 @@ package com.businessOracle.businessOracle.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundListOperations;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * redisTemplate封装
  */
 @Component
-public class RedisUtil {
+public class RedisUtil extends AbstractBaseRedisDao{
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -608,6 +609,21 @@ public class RedisUtil {
 
     //=========BoundListOperations 用法 End============
 
+    public boolean addAsynchronous(int max){
+        //方案1（异步）
+        boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            RedisSerializer<String> redisSerializer = getRedisSerializer();
+            for (int i=0; i<max; i++){
+                byte[] key = redisSerializer.serialize("key-"+i);
+                byte[] value = redisSerializer.serialize("value-"+i);
+                if (!connection.setNX(key, value)){
+                    return false;
+                }
+            }
+            return true;
+        });
+        return result;
 
+    }
 
 }

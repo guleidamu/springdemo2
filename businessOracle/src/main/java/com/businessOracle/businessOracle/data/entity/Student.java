@@ -33,4 +33,13 @@ public class Student implements Serializable {
     private Integer no1;
 
     private Integer no2;
+
+    public Student(){}
+
+    public Student(String studentName, String studentSex, Integer studentNo){
+        this.studentName = studentName;
+        this.studentSex = studentSex;
+        this.studentNo = studentNo;
+    }
+
 }

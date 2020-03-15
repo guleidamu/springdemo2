@@ -6,10 +6,10 @@
     <file url="file://$PROJECT_DIR$/business/business-school" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/businessOracle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eurek-8002" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learnModel" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/learnTest" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/server-zipkin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/service-feign" charset="UTF-8" />

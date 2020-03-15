@@ -1,4 +1,4 @@
-package com.businessOracle.businessOracle.service.StudentServiceImpl;
+package com.businessOracle.businessOracle.service.impl;
 
 import com.businessOracle.businessOracle.data.dto.SearchStudentDto;
 import com.businessOracle.businessOracle.data.entity.Course;
@@ -10,7 +10,10 @@ import com.businessOracle.businessOracle.service.StudentService;
 import com.businessOracle.businessOracle.util.CallBackTest;
 import com.businessOracle.businessOracle.util.SendEMailUtil;
 import com.businessOracle.businessOracle.util.ThreadPool;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,9 +31,14 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public ArrayList<StudentVo> getStudentByName(SearchStudentDto searchStudentDto) {
+    @Cacheable(value = {"searchStudentDto"}, key="#searchStudentDto.name")
+    public PageInfo<StudentVo> getStudentByName(SearchStudentDto searchStudentDto) {
+        log.info("searchStudentDto的值" + searchStudentDto);
+        PageHelper.startPage(searchStudentDto.getPageCode(),searchStudentDto.getPageSize());
         String name = searchStudentDto.getName();
-        return studentMapper.getStudentByName(name);
+        ArrayList studentList = studentMapper.getStudentByName(name);
+        PageInfo<StudentVo> pageInfo = new PageInfo<>(studentList);
+        return pageInfo;
     }
 
     /**

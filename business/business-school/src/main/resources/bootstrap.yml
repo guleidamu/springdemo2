@@ -20,6 +20,8 @@ spring:
       discovery:
         service-id: config
         enabled: true
+  redis:
+    host: localhost
 #      name: ${spring.application.name}
 #      profile: ${spring.profiles.active}
 

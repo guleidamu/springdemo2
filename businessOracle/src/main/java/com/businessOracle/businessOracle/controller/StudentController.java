@@ -4,13 +4,13 @@ import com.businessOracle.businessOracle.data.dto.SearchStudentDto;
 import com.businessOracle.businessOracle.data.entity.Student;
 import com.businessOracle.businessOracle.data.vo.StudentVo;
 import com.businessOracle.businessOracle.service.StudentService;
-import com.businessOracle.businessOracle.service.StudentServiceImpl.StudentServiceImpl;
 import com.example.springdemo.businessSchool.response.ResultBuilder;
 import com.github.pagehelper.PageInfo;
 import com.example.springdemo.businessSchool.response.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @Api(description = "学生信息接口")
 @RestController
 @RequestMapping(value = "/Oracle")
+@EnableCaching
 public class StudentController {
 
     @Resource
     private StudentService studentServiceImplTest;
     //StudentService studentService = new StudentService();报错，因为接口不能直接被实例化
-//    StudentService studentService = new StudentServiceImpl();没报错，实现多态
+//    StudentService studentService = new impl();没报错，实现多态
     @Resource
     private StudentService studentServiceImpl;
 
@@ -48,8 +48,8 @@ public class StudentController {
 
     @ApiOperation(value = "通过学生名称获取学生信息", notes = "新增学生名称获取学生信息1")
     @PostMapping(value = "/getStudentTest")
-    public List<StudentVo> getStudentTest(@Valid @RequestBody SearchStudentDto searchStudentDto) {
-        return studentServiceImplTest.getStudentByName(searchStudentDto);
+    public Result<PageInfo<StudentVo>> getStudentTest(@Valid @RequestBody SearchStudentDto searchStudentDto) {
+        return ResultBuilder.success(studentServiceImplTest.getStudentByName(searchStudentDto));
     }
 
 

@@ -12,4 +12,13 @@ public class Course implements Serializable {
     private String courseName;
 
     private String teacherNo;
+
+    public Course(){}
+
+    public Course(String courseNo, String courseName, String teacherNo){
+        this.courseNo = courseNo;
+        this.courseName = courseName;
+        this.teacherNo = teacherNo;
+    }
+
 }

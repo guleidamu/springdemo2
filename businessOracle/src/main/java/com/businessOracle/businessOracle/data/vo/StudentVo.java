@@ -4,10 +4,11 @@ import com.example.springdemo.businessSchool.data.dict.SexType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class StudentVo {
+public class StudentVo implements Serializable {
 
     private String studentNo;
 

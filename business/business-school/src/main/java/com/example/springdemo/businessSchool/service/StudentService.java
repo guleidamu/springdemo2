@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface StudentService {
+
+
     PageInfo<StudentVo> findStudentByName(SearchStudentSearchDto searchStudentDto);
 
     ArrayList<DynamicStudentVo> getDynamicStudent(DynamicDto dynamicDto);
@@ -19,4 +21,7 @@ public interface StudentService {
     int addStudent(Student student);
 
     int addCourse(Course course);
+
+    PageInfo<StudentVo> getStudentByRedis(SearchStudentSearchDto searchStudentDto);
+
 }

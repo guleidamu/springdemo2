@@ -10,7 +10,7 @@ public class test {
 //        circle.move();
         circle.erase();
         circle.height();
-        //son = circle.father;
+        //Son = circle.Father;
     }
     private test(){
         Circle circle = new Circle();
