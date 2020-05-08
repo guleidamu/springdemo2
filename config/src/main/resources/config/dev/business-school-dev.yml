@@ -19,3 +19,7 @@ spring:
 
 file:
   upload: D:/fileUpload/
+
+feign:
+  hystrix:
+    enabled: true

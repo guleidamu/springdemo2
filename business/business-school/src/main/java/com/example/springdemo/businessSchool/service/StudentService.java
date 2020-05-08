@@ -16,6 +16,8 @@ public interface StudentService {
 
     PageInfo<StudentVo> findStudentByName(SearchStudentSearchDto searchStudentDto);
 
+    PageInfo<StudentVo> findStudentByNameNoCache(SearchStudentSearchDto searchStudentDto);
+
     ArrayList<DynamicStudentVo> getDynamicStudent(DynamicDto dynamicDto);
 
     int addStudent(Student student);

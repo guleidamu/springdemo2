@@ -43,6 +43,15 @@ public class StudentController {
     @ApiOperation(value = "通过学生名称获取学生信息", notes = "新增学生名称获取学生信息1")
     @PostMapping(value = "/getStudent")
     public Result getStudent(@Valid @RequestBody SearchStudentDto searchStudentDto) {
+        log.info("开始进入getStudent");
+        try{
+            log.info("开始进入查询状态getStudent");
+            Thread.currentThread().sleep(5000);
+
+            log.info("查询getStudent结束");
+        }catch(InterruptedException ie){
+            ie.printStackTrace();
+        }
         return ResultBuilder.success(studentServiceImpl.getStudentByName(searchStudentDto));
     }
 

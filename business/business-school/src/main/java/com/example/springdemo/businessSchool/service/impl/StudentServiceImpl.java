@@ -21,10 +21,12 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.poi.ss.formula.functions.T;
 
 @Slf4j
-@Service
+@Service("StudentServiceImpl")
 public class StudentServiceImpl implements StudentService {
 
     @Resource
@@ -56,11 +58,21 @@ public class StudentServiceImpl implements StudentService {
     public PageInfo<StudentVo> getStudentByRedis(SearchStudentSearchDto searchStudentDto) {
         log.info("searchStudentDto: " +searchStudentDto +"转json"+ JSONObject.toJSONString(searchStudentDto));
         PageHelper.startPage(searchStudentDto.getPageCode(),searchStudentDto.getPageSize());
-        List<StudentVo> list = studentMapper.getStudentByName(searchStudentDto.getSname());
-        redisTemplate.opsForValue().set("studentDtoT1",JSONObject.toJSONString(searchStudentDto));
-        RedisTemplateSer.opsForValue().set("studentDtoT1",searchStudentDto);
+        List<StudentVo> studentVolist = studentMapper.getStudentByName(searchStudentDto.getSname());
+        StudentVo StudentVoFirst = studentVolist.get(0);
+//        redisTemplate.opsForValue()
+
+//        redisTemplate.opsForValue().set("studentDtoT1",JSONObject.toJSONString(studentVolist));
+        try {
+            Object object = RedisTemplateSer.opsForValue().get("StudentVoFirst");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        String ans =  redisTemplate.opsForValue().get("");
+        RedisTemplateSer.opsForValue().set("StudentVoFirst",StudentVoFirst);
+
 //        myRedisConfigTest.RedisTemplateSer().set("studentDtoT1",searchStudentDto);
-        PageInfo<StudentVo> pageInfo = new PageInfo<>(list);
+        PageInfo<StudentVo> pageInfo = new PageInfo<>(studentVolist);
         return pageInfo;
     }
 
@@ -69,6 +81,15 @@ public class StudentServiceImpl implements StudentService {
     @Cacheable(value = {"studentVo"}, key="#searchStudentDto.sname")
     public PageInfo<StudentVo> findStudentByName(SearchStudentSearchDto searchStudentDto) {
         log.info("searchStudentDto: " +searchStudentDto);
+        PageHelper.startPage(searchStudentDto.getPageCode(),searchStudentDto.getPageSize());
+        List<StudentVo> list = studentMapper.getStudentByName(searchStudentDto.getSname());
+        PageInfo<StudentVo> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<StudentVo> findStudentByNameNoCache(SearchStudentSearchDto searchStudentDto) {
+        log.info("findStudentByNameNoCache,searchStudentDto: " +searchStudentDto);
         PageHelper.startPage(searchStudentDto.getPageCode(),searchStudentDto.getPageSize());
         List<StudentVo> list = studentMapper.getStudentByName(searchStudentDto.getSname());
         PageInfo<StudentVo> pageInfo = new PageInfo<>(list);

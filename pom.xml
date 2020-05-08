@@ -21,13 +21,16 @@
 
     <modules>
         <module>eureka</module>
-        <module>eureka-8002</module>
         <module>business</module>
         <module>config</module>
         <module>gateway</module>
         <module>businessOracle</module>
         <module>learning</module>
         <module>learnModel</module>
+        <module>eureka8002</module>
+        <module>business-api</module>
+        <module>data_collection_common</module>
+        <module>jwtTokenDemo</module>
     </modules>
 
     <dependencies>

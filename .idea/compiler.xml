@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="business-api" />
         <module name="business-business" />
         <module name="business-school" />
         <module name="businessOracle" />
         <module name="config" />
-        <module name="eurek-8002" />
+        <module name="data_collection_common" />
+        <module name="dcClient" />
+        <module name="dcService" />
         <module name="eureka" />
+        <module name="eureka8002" />
         <module name="gateway" />
         <module name="learnModel" />
         <module name="serverzipkin" />
@@ -24,18 +28,27 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="business-ribbon" target="1.8" />
+      <module name="dc-server" target="1.8" />
+      <module name="eurek-8002" target="1.8" />
+      <module name="jwt-token-demo" target="1.8" />
       <module name="service-feign" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="business-api" options="-parameters" />
       <module name="business-business" options="-parameters" />
       <module name="business-ribbon" options="-parameters" />
       <module name="business-school" options="-parameters" />
       <module name="businessOracle" options="-parameters" />
       <module name="config" options="-parameters" />
+      <module name="data_collection_common" options="-parameters" />
+      <module name="dc-server" options="-parameters" />
+      <module name="dcClient" options="-parameters" />
+      <module name="dcService" options="-parameters" />
       <module name="eurek-8002" options="-parameters" />
       <module name="eureka" options="-parameters" />
+      <module name="eureka8002" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="learnModel" options="-parameters" />
       <module name="serverzipkin" options="" />

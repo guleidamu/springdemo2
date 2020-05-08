@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @SpringBootApplication
 @EnableEurekaClient
 @MapperScan(basePackages = {"com.businessOracle.businessOracle.mapper"})

@@ -2,9 +2,11 @@ package com.example.springdemo.businessSchool.controller;
 
 import com.example.springdemo.businessSchool.data.dict.LogRecord;
 import com.example.springdemo.businessSchool.data.dto.DynamicDto;
+import com.example.springdemo.businessSchool.data.dto.SearchStudentDto;
 import com.example.springdemo.businessSchool.data.dto.SearchStudentSearchDto;
 import com.example.springdemo.businessSchool.data.entity.Student;
 import com.example.springdemo.businessSchool.data.vo.StudentVo;
+import com.example.springdemo.businessSchool.feign.BusinessOracleClient;
 import com.example.springdemo.businessSchool.response.Result;
 import com.example.springdemo.businessSchool.response.ResultBuilder;
 import com.example.springdemo.businessSchool.service.StudentService;
@@ -33,8 +35,12 @@ import org.slf4j.Logger;
 @EnableCaching
 public class StudentController {
 
-    @Resource
+
+    @Resource(name = "StudentServiceImpl")
     private StudentService studentService;
+
+    @Resource
+    private BusinessOracleClient businessOracleClient;
 
     @Value("${file.upload}")
     private String filePath;
@@ -51,6 +57,17 @@ public class StudentController {
         PageInfo<StudentVo> result = studentService.findStudentByName(searchStudentDto);
         return ResultBuilder.success(result);
     }
+
+
+    @LogRecord
+    @ApiOperation(value = "通过学生名称获取学生信息，不通过缓存", notes = "新增学生名称获取学生信息1")
+    @PostMapping(value = "/getStudentNoCache")
+    //@Validated,@HeaderContext
+    public Result<PageInfo<StudentVo>> getStudentNoCache(@Valid @RequestBody SearchStudentSearchDto searchStudentDto) {
+        PageInfo<StudentVo> result = studentService.findStudentByNameNoCache(searchStudentDto);
+        return ResultBuilder.success(result);
+    }
+
 
     @PostMapping(value="/getDynamicStudent")
     public Result getDynamicStudent(@RequestBody DynamicDto dynamicDto){
@@ -104,6 +121,13 @@ public class StudentController {
     @PostMapping("/getStudentByRedis")
     public Result getStudentByRedis(@RequestBody SearchStudentSearchDto searchStudentDto){
         return ResultBuilder.success(studentService.getStudentByRedis(searchStudentDto));
+    }
+
+
+    @PostMapping("/getStudentByFeign")
+    public Result getStudentFromOracle(@RequestBody SearchStudentDto searchStudentDto){
+
+        return ResultBuilder.success(businessOracleClient.getStudent(searchStudentDto));
     }
 
 }

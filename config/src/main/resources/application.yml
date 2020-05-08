@@ -23,4 +23,5 @@ eureka:
     instance-id: ${spring.application.name}:${server.port} #自定义服务名称信息
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://sct-eureka8002:8002/eureka/,http://sct-eureka:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
