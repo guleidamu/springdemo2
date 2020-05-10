@@ -31,6 +31,7 @@
         <module>business-api</module>
         <module>data_collection_common</module>
         <module>jwtTokenDemo</module>
+        <module>springboot-mq-demo</module>
     </modules>
 
     <dependencies>

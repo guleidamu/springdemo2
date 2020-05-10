@@ -42,6 +42,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- spring boot redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.example.springdemo</groupId>-->
             <!--<artifactId>business-school</artifactId>-->
