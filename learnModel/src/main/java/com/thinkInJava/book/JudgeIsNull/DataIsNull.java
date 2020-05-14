@@ -18,8 +18,12 @@ public class DataIsNull {
     public static void main(String[] args) {
         DataIsNull dataIsNull = new DataIsNull();
         String str = "";
-//        dataIsNull.StringIsNull(str);
-        dataIsNull.CollectionIsNull();
+////        dataIsNull.StringIsNull(str);
+//        dataIsNull.CollectionIsNull();
+//        Circle circle = new Circle();
+//        System.out.println(circle.toString());
+//        dataIsNull.ObjectNull(circle);
+        dataIsNull.StringIsNull(str);
     }
 
     //    private void StringIsNull(){
@@ -37,6 +41,19 @@ public class DataIsNull {
         } else {
             log.info("testData不是null");
         }
+        String testData1;
+        if("".equals(str) ){
+            System.out.println("");
+        }
+        if(null == str){
+            System.out.println("null");
+        }
+        if(str.length() ==0 ){
+            System.out.println("str.length() ==0");
+        }
+        if( str == null || str.length() == 0 ){
+            System.out.println("str == null || str.length() == 0");
+        }
         /**
          *     public static boolean isEmpty(String str) {
          *         return str == null || str.length() == 0;
@@ -46,6 +63,23 @@ public class DataIsNull {
             log.info("test是null");
         } else {
             log.info("不是Null");
+        }
+    }
+
+    public void ObjectNull(Circle circle1){
+        Circle circle = new Circle();
+        Circle circle2 = null;
+        circle2.getRightHeight();
+        if(null == circle){
+            System.out.println("null 等于circle");
+        }
+
+        if(null == circle1){
+            System.out.println("null 等于circle");
+        }
+
+        if(ObjectUtils.isEmpty(circle)){
+            System.out.println("用ObjectUtils判空");
         }
     }
 

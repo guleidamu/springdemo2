@@ -6,6 +6,26 @@ public class Circle extends Shape {
 
     private String rightHeight;
 
+    public void setTest(String test) {
+        this.test = test;
+    }
+
+    public void setRightHeight(String rightHeight) {
+        this.rightHeight = rightHeight;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public String getRightHeight() {
+        return rightHeight;
+    }
+
+    public String getWhite() {
+        return white;
+    }
+
     private void example(){
         this.erase();
         this.height();
