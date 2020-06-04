@@ -25,6 +25,15 @@ public class ResultBuilder {
         result.setDescription(message);
         return result;
     }
+
+    public static Result error(ResultCode resultCode){
+        Result result=new Result();
+        result.setCode(resultCode.getCode());
+        result.setSuccess(false);
+        result.setDescription(resultCode.getDescription());
+        return result;
+    }
+
     public static Result error(IResultCode code,String message){
         Result result=new Result();
         result.setSuccess(false);

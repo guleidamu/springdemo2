@@ -17,5 +17,5 @@ public class StudentVo implements Serializable {
 
     private Date sbirthday;
 
-    private String calssno;
+    private String classNo;
 }

@@ -1,5 +1,6 @@
 package com.skyon.dc.runner;
 
+
 import com.skyon.dc.config.KeyConfiguration;
 import com.skyon.dc.util.RsaKeyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class AuthServerRunner implements CommandLineRunner{
             redisTemplate.opsForValue().set(REDIS_SERVICE_PRI_KEY, RsaKeyHelper.toHexString(keyMap.get("pri")));
             redisTemplate.opsForValue().set(REDIS_SERVICE_PUB_KEY, RsaKeyHelper.toHexString(keyMap.get("pub")));
         }
+        System.out.println("keyConfiguration" + keyConfiguration);
     }
 }
 

@@ -88,6 +88,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<StudentVo> findStudentListByName(SearchStudentSearchDto searchStudentDto) {
+        return studentMapper.getStudentByName(searchStudentDto.getSname());
+    }
+
+    @Override
     public PageInfo<StudentVo> findStudentByNameNoCache(SearchStudentSearchDto searchStudentDto) {
         log.info("findStudentByNameNoCache,searchStudentDto: " +searchStudentDto);
         PageHelper.startPage(searchStudentDto.getPageCode(),searchStudentDto.getPageSize());

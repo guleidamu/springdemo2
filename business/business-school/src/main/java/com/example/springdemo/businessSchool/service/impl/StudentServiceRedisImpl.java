@@ -55,6 +55,11 @@ public class StudentServiceRedisImpl implements StudentService {
     }
 
     @Override
+    public List<StudentVo> findStudentListByName(SearchStudentSearchDto searchStudentDto) {
+        return null;
+    }
+
+    @Override
     public PageInfo<StudentVo> findStudentByNameNoCache(SearchStudentSearchDto searchStudentDto) {
         return null;
     }
