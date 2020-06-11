@@ -34,8 +34,8 @@
     </select>
 
     <insert id="insertStudent">
-        insert into student(sno, sname, ssex)
-        values(#{studentNo, jdbcType=VARCHAR}, #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
+        insert into student( sname, ssex)
+        values( #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
     </insert>
 
     <insert id="insertCourse">

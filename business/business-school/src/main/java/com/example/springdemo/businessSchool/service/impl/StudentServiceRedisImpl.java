@@ -71,7 +71,7 @@ public class StudentServiceRedisImpl implements StudentService {
 
     @Override
     public int addStudent(Student student) {
-        return 0;
+        return studentMapper.insertStudent(student);
     }
 
     @Override

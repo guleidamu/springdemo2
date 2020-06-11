@@ -2,6 +2,7 @@ package com.example.springdemo.businessSchool.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.springdemo.businessSchool.constant.RedisConstant;
 import com.example.springdemo.businessSchool.data.dict.LogRecord;
 import com.example.springdemo.businessSchool.data.dto.SearchStudentSearchDto;
 import com.example.springdemo.businessSchool.data.entity.Student;
@@ -55,6 +56,7 @@ public class StudentRedisController {
     @Resource
     RedisTemplate<String, Object> redisTemplateSerializable;
 
+    RedisConstant redisConstant = new RedisConstant();
 
     @LogRecord
     @ApiOperation(value = "通过学生名称获取学生信息", notes = "新增学生名称获取学生信息1")
@@ -123,5 +125,48 @@ public class StudentRedisController {
         return obj1;
     }
 
+    @PostMapping(value = "/addStudentInRedis")
+    public String addStudentInRedis(@Valid @RequestBody SearchStudentSearchDto searchStudentDto){
+        Student student = new Student();
+        student.setStudentName(searchStudentDto.getSname());
+        student.setStudentNo(23);
+        student.setStudentName("you are beautiful");
+        student.setStudentSex("1");
+        studentService.addStudent(student);
+        redisTemplateSer.opsForValue().set(redisConstant.REDIS_GETSTUDENT,student);
+        redisTemplate.opsForValue().set(redisConstant.REDIS_GETSTUDENT_COPY,student);
+        redisTemplateSerializable.opsForValue().set("888",student);
+//        PageInfo<StudentVo> result = studentService.findStudentByName(searchStudentDto);
+//        //默认如果保存对象，使用jdk序列化机制，序列化后的数据保存到redis中
+//
+//        //1.将数据以json 的方式保存
+//        //(1),将json对象转换为json
+////        stringRedisTemplate.opsForValue().set("yi",JSON.toJSONString(student));
+//        //（2），将redisTemplate的默认序列化规则,改变默认的序列化规则
+////        redisTemplate.opsForValue().set("yiEr",student);
+////        redisTemplate.opsForValue().set("san",student);
+//        redisTemplate.opsForValue().set("wu",student);
+//        redisTemplateSer.opsForValue().set("liu",student);
+//        redisTemplateSerializable.opsForValue().set("qi",student);
+//        String yiValue = stringRedisTemplate.opsForValue().get("yi");
+//        System.out.println("yiValue" + yiValue);
+//        Student student1 = null;
+//        student1 = JSONObject.parseObject(yiValue,Student.class);
+//        System.out.println("student1" + student1);
+        return "3";
+    }
+
+
+
+    @PostMapping(value = "/redisGetStudentById")
+    public String redisGetStudentById(){
+        //string读写
+
+        Object object = redisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT);
+        Object object1 = redisTemplateSer.opsForValue().get("liu");
+        String obj1 = object1.toString();
+        Object object2 = redisTemplateSerializable.opsForValue().get("liu");
+        return obj1;
+    }
 
 }
