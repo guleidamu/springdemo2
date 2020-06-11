@@ -113,4 +113,15 @@ public class StudentRedisController {
     }
 
 
+    @PostMapping(value = "/redisGetStudent")
+    public String redisGetStudent(){
+        //string读写
+        Object object = redisTemplate.opsForValue().get("liu");
+        Object object1 = redisTemplateSer.opsForValue().get("liu");
+        String obj1 = object1.toString();
+        Object object2 = redisTemplateSerializable.opsForValue().get("liu");
+        return obj1;
+    }
+
+
 }
