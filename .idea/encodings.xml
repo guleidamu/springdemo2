@@ -22,6 +22,7 @@
     <file url="file://$PROJECT_DIR$/learning/service-miya" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/service-ribbion" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/service-zuul" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq_demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-mq-demo" charset="UTF-8" />
   </component>
 </project>

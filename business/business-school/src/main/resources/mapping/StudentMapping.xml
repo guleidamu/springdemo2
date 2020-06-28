@@ -33,7 +33,7 @@
         where id = #{id, jdbcType=INTEGER}
     </select>
 
-    <insert id="insertStudent">
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="studentNo">
         insert into student( sname, ssex)
         values( #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
     </insert>

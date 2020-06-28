@@ -19,4 +19,5 @@ public class BookService {
         System.out.println(message.getBody());
         System.out.println(message.getMessageProperties());
     }
+
 }

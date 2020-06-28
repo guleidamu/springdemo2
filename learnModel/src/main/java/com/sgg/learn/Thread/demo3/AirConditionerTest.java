@@ -31,9 +31,6 @@ class AirConditioner{
 //多线程交换中，必须要防止多线程的虚假唤醒，也即（多线程中判断不许用if，只能用while）；
 
 public class AirConditionerTest {
-
-
-
     public static void main(String[] args) {
         AirConditioner airConditioner = new AirConditioner();
         new Thread(() ->{

@@ -5,7 +5,11 @@ public enum ResultCode implements IResultCode {
     PARAM_ERROR("400","参数错误"),
     UNAUTHORIZED("401","未授权"),
     INTERNAL_ERROR("500","系统内部错误"),
-    SOURCE_NOT_FOUND("404","资源为找到")
+    SOURCE_NOT_FOUND("404","资源为找到"),
+    REPEAT_SECONDKILL("10001","重复秒杀"),
+    USER_NOTFOUND("10002","查找不到用户"),
+    USER_NO_LOGIN("10005","用户未登录"),
+    ERROR_PASSWORD("10003", "密码错误")
     ;
     ResultCode(String code,String description){
         this.code=code;

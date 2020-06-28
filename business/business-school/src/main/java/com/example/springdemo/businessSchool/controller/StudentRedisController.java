@@ -1,13 +1,13 @@
 package com.example.springdemo.businessSchool.controller;
 
-import com.alibaba.fastjson.JSON;
+
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.springdemo.businessSchool.constant.RedisConstant;
 import com.example.springdemo.businessSchool.data.dict.LogRecord;
 import com.example.springdemo.businessSchool.data.dto.SearchStudentSearchDto;
 import com.example.springdemo.businessSchool.data.entity.Student;
 import com.example.springdemo.businessSchool.data.vo.StudentVo;
-import com.example.springdemo.businessSchool.mapper.StudentMapper;
 import com.example.springdemo.businessSchool.response.Result;
 import com.example.springdemo.businessSchool.response.ResultBuilder;
 import com.example.springdemo.businessSchool.service.StudentService;
@@ -39,13 +39,8 @@ public class StudentRedisController {
     @Resource(name = "StudentServiceRedisImpl")
     private StudentService studentService;
 
-    private StudentMapper studentMapper;
-
     @Autowired
     private StringRedisTemplate stringRedisTemplate; //操作k-v都是字符串
-//
-//    @Autowired
-//    private RedisTemplate redisTemplate; //k-v都是对象
 
     @Resource
     private RedisTemplate redisTemplate;
@@ -132,9 +127,11 @@ public class StudentRedisController {
         student.setStudentNo(23);
         student.setStudentName("you are beautiful");
         student.setStudentSex("1");
-        studentService.addStudent(student);
+        int studentNo = studentService.addStudent(student);
         redisTemplateSer.opsForValue().set(redisConstant.REDIS_GETSTUDENT,student);
         redisTemplate.opsForValue().set(redisConstant.REDIS_GETSTUDENT_COPY,student);
+        String StudentJson = JSONObject.toJSONString(student);
+        stringRedisTemplate.opsForValue().set(redisConstant.REDIS_GETSTUDENT_STRING,StudentJson);
         redisTemplateSerializable.opsForValue().set("888",student);
 //        PageInfo<StudentVo> result = studentService.findStudentByName(searchStudentDto);
 //        //默认如果保存对象，使用jdk序列化机制，序列化后的数据保存到redis中
@@ -163,8 +160,16 @@ public class StudentRedisController {
         //string读写
 
         Object object = redisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT);
-        Object object1 = redisTemplateSer.opsForValue().get("liu");
+        String studentJson = stringRedisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT_STRING);
+        Student studentFromJson = JSONObject.parseObject(studentJson,Student.class);
+        Object object6 = redisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT);
+        Object object7 = redisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT_COPY);
+        String stringValue = (String)redisTemplate.opsForValue().get(redisConstant.REDIS_GETSTUDENT_COPY);
+        Object object1 = redisTemplateSer.opsForValue().get(redisConstant.REDIS_GETSTUDENT);
         String obj1 = object1.toString();
+        String StringJson = (String)redisTemplateSer.opsForValue().get(redisConstant.REDIS_GETSTUDENT);
+        Student student = (Student)JSONArray.parseArray(StringJson, Student.class);
+        String obj2 = object1.toString();
         Object object2 = redisTemplateSerializable.opsForValue().get("liu");
         return obj1;
     }

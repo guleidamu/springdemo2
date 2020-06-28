@@ -9,6 +9,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-mq-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/mq_demo/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

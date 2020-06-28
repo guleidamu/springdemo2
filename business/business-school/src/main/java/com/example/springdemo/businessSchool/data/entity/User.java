@@ -1,34 +1,24 @@
 package com.example.springdemo.businessSchool.data.entity;
 
+import lombok.*;
+
 import java.io.Serializable;
+import java.util.Date;
 
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
 
-    private String username;
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class User implements Serializable{
+    private int id;
+    private String userName;
+    private String phone;
     private String password;
-
-    public User(String username, String password) {
-        super();
-        this.username = username;
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "{username:" + getUsername() + ", password:" +getPassword() + "}";
-    }
+    private String salt;
+    private String head;
+    private int loginCount;
+    private Date registerDate;
+    private Date lastLoginDate;
 }

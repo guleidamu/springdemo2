@@ -18,6 +18,7 @@
         <module name="eureka8002" />
         <module name="gateway" />
         <module name="learnModel" />
+        <module name="mq_demo" />
         <module name="serverzipkin" />
         <module name="service-hi" />
         <module name="servicefeign" />
@@ -52,6 +53,7 @@
       <module name="eureka8002" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="learnModel" options="-parameters" />
+      <module name="mq_demo" options="-parameters" />
       <module name="serverzipkin" options="" />
       <module name="service-feign" options="" />
       <module name="service-hi" options="" />
