@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutionException;
  * @Version: 1.0.0
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = BusinessSchoolApplication.class)
 public class AsyncTest {
 
     private static final Logger logger = LoggerFactory.getLogger(AsyncTest.class);
