@@ -32,6 +32,7 @@
         <module>data_collection_common</module>
         <module>jwtTokenDemo</module>
         <module>springboot-mq-demo</module>
+        <module>spring_jpa</module>
     </modules>
 
     <dependencies>

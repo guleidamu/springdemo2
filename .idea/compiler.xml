@@ -25,6 +25,7 @@
         <module name="servicemiya" />
         <module name="serviceribbion" />
         <module name="servicezuul" />
+        <module name="spring_jpa" />
         <module name="springboot-mq-demo" />
       </profile>
     </annotationProcessing>
@@ -59,6 +60,7 @@
       <module name="service-hi" options="" />
       <module name="servicemiya" options="-parameters" />
       <module name="servicezuul" options="-parameters" />
+      <module name="spring_jpa" options="-parameters" />
       <module name="springboot-mq-demo" options="-parameters" />
       <module name="springdemo2" options="-parameters" />
     </option>

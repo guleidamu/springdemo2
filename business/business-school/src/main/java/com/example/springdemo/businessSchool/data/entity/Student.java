@@ -2,7 +2,10 @@ package com.example.springdemo.businessSchool.data.entity;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
+
+
 
 @Data
 public class Student implements Serializable {

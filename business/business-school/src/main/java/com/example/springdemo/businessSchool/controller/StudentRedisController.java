@@ -100,7 +100,7 @@ public class StudentRedisController {
 //        redisTemplate.opsForValue().set("yiEr",student);
 //        redisTemplate.opsForValue().set("san",student);
         redisTemplate.opsForValue().set("wu",student);
-        redisTemplateSer.opsForValue().set("liu",student);
+        redisTemplateSer.opsForValue().set("yi",student);
         redisTemplateSerializable.opsForValue().set("qi",student);
         String yiValue = stringRedisTemplate.opsForValue().get("yi");
         System.out.println("yiValue" + yiValue);

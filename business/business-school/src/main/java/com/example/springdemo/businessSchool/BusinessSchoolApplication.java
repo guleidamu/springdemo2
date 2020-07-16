@@ -1,6 +1,8 @@
 package com.example.springdemo.businessSchool;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.redisson.Redisson;
+import org.redisson.config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -30,5 +32,13 @@ public class BusinessSchoolApplication {
     @LoadBalanced
     RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public Redisson redission(){
+        //此为单机模式
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://127.0.0.1:6379").setDatabase(0);
+        return (Redisson) Redisson.create(config);
     }
 }
