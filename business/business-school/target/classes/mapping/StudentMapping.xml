@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springdemo.businessSchool.mapper.StudentMapper">
+    <resultMap id="sysUserMap" type="com.example.springdemo.businessSchool.data.vo.StudentVo">
+        <result column="sno" property="sno" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="sname" property="sname" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="ssex" property="ssex"
+                typeHandler="com.example.springdemo.businessSchool.data.dict.handle.EnumKeyTypeHandler" />
+        <result column="calssno" property="calssno" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="sbirthday" property="sbirthday" jdbcType="DATE" javaType="java.util.Date"/>
+    </resultMap>
+
+    <resultMap id="dynamicStudentMap" type="com.example.springdemo.businessSchool.data.vo.DynamicStudentVo">
+        <result column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="getStudentByName" resultMap="sysUserMap" parameterType="java.lang.String">
+        select * from student
+        where 1 = 1
+        <if test="sname != null and sname !=''">
+            and sname = #{sname,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+    <!--<select id="getDynamicStudent" resultMap="dynamicStudentMap" parameterType="java.lang.String">-->
+        <!--select * from #{tableName,jdbcType=VARCHAR}-->
+    <!--</select>-->
+
+    <select id="getDynamicStudent" resultMap="dynamicStudentMap" parameterType="java.lang.String">
+        select * from ${tableName}
+        where id = #{id, jdbcType=INTEGER}
+    </select>
+
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="studentNo">
+        insert into student( sname, ssex)
+        values( #{studentName, jdbcType=VARCHAR}, #{studentSex, jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertCourse">
+        insert into course(cno, cname, tno)
+        values(#{courseNo, jdbcType=VARCHAR}, #{courseName, jdbcType=VARCHAR}, #{teacherNo, jdbcType=VARCHAR})
+    </insert>
+
+
+    <!--<insert id="addUser" parameterType="com.sct.business.data.dto.SysUserDto">-->
+    <!--insert into sys_user(username,password,phone,avatar,create_time)-->
+    <!--values ( #{userName,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},-->
+    <!--#{avatar,jdbcType=VARCHAR},#{createDate,jdbcType=TIMESTAMP})-->
+    <!--</insert>-->
+
+    <!--<delete id="deleteUser">-->
+    <!--delete from sys_user-->
+    <!--where id = #{id, jdbcType=INTEGER}-->
+    <!--</delete>-->
+
+    <!--<update id="modifyUser"  parameterType="com.sct.business.data.dto.SysUserDto">-->
+    <!--update sys_user-->
+    <!--set username = #{userName, jdbcType=VARCHAR},password = #{password,jdbcType = VARCHAR},-->
+    <!--avatar = #{avatar, jdbcType = VARCHAR},phone = #{phone, jdbcType=VARCHAR}-->
+    <!--where id=#{id, jdbcType=INTEGER}-->
+    <!--</update>-->
+
+
+</mapper>

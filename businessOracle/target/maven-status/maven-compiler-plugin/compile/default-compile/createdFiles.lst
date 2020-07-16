@@ -1,0 +1,14 @@
+com\businessOracle\businessOracle\data\entity\Course.class
+com\businessOracle\businessOracle\data\vo\SchoolClassVo.class
+com\businessOracle\businessOracle\service\StudentService.class
+com\businessOracle\businessOracle\data\vo\StudentVo.class
+com\businessOracle\businessOracle\service\StudentServiceImpl\StudentServiceImplTest.class
+com\businessOracle\businessOracle\controller\StudentController.class
+com\businessOracle\businessOracle\data\entity\Dept.class
+com\businessOracle\businessOracle\data\dto\SearchStudentDto.class
+com\businessOracle\businessOracle\data\entity\Student.class
+com\businessOracle\businessOracle\util\jdbc.class
+com\businessOracle\businessOracle\mapper\StudentMapper.class
+com\businessOracle\businessOracle\businessOracleApplication.class
+com\businessOracle\businessOracle\service\StudentServiceImpl\StudentServiceImpl.class
+com\businessOracle\businessOracle\data\entity\DcsManualTask.class

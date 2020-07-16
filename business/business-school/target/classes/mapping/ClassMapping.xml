@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springdemo.businessSchool.mapper.ClassMapper">
+    <resultMap id="classMap" type="com.example.springdemo.businessSchool.data.vo.ClassVO">
+        <result column="class_no" property="classNo"/>
+        <result column="class_name" property="className" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="master_name" property="masterName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <collection property="studentVoList" ofType="com.example.springdemo.businessSchool.data.vo.StudentVo">
+            <result column="sno" property="sno" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <result column="sname" property="sname" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <result column="ssex" property="ssex"
+                    typeHandler="com.example.springdemo.businessSchool.data.dict.handle.EnumKeyTypeHandler" />
+            <result column="calssno" property="calssno" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <result column="sbirthday" property="sbirthday" jdbcType="DATE" javaType="java.util.Date"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="getClassByMasterName" resultMap="classMap" parameterType="com.example.springdemo.businessSchool.data.dto.ClassDTO">
+        select class.class_no as class_no,
+        class.class_name as class_name,
+        class.master_name as master_name,
+        student.sno as sno,
+        student.sname as sname,
+        student.ssex as ssex,
+        student.sbirthday as sbirthday,
+        student.classno as classno
+        from class left join student
+        on class.class_no = student.classno
+        where 1 =1
+        <if test="masterName != null and masterName !=''">
+            and class.master_name like '%'||#{masterName,jdbcType=VARCHAR}||'%'
+        </if>
+    </select>
+
+    <insert id="insertClassBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="classNo">
+      insert into class(class_no,class_name, master_name)
+      values
+      <foreach collection="list" item = "classModel" index="index" separator=",">
+          (
+          #{classModel.classNo}, #{classModel.className},#{classModel.masterName}
+          )
+      </foreach>
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,22 @@
+server:
+  port: 6062
+spring:
+  application:
+    name: dc-client
+  redis:
+    database: 5
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 20
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+jwt:
+  token-header: Authorization
+  expire: 14400
+  secret: MTIzNDU2

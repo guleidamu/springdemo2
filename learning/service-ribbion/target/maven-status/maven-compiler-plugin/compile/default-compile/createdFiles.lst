@@ -1,0 +1,3 @@
+com\example\ribbon\web\HelloController.class
+com\example\ribbon\ServiceRibbonApplication.class
+com\example\ribbon\service\HelloService.class

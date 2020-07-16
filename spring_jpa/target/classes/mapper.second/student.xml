@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springdemo.spring_jpa.dao.second.StudentMapper">
+    <resultMap id="studentMap" type="com.springdemo.spring_jpa.domain.Student">
+        <result column="id" property="id" />
+        <result column="name" property="id" />
+        <result column="age" property="age" />
+    </resultMap>
+    <select id="queryStudents" resultMap="studentMap">
+        SELECT * FROM student
+    </select>
+</mapper>

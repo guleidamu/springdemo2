@@ -1,0 +1,6 @@
+com\example\learn\ServiceFeignApplication.class
+com\example\learn\service\FeignService.class
+com\example\learn\service\FeignServiceHystric.class
+com\example\learn\service\SchedualServiceHi.class
+com\example\learn\service\SchedualServiceHiHystric.class
+com\example\learn\web\HiController.class

@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: scott
+    password: tiger
+#本地
+    url: jdbc:oracle:thin:@127.0.0.1:1521:ORCL
+#    url: jdbc:oracle:thin:@192.168.43.127:1521:ORCL
+#linux
+#    url: jdbc:oracle:thin:@192.168.43.9:1521:ORCL
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+  mail:
+    host: smtp.qq.com
+    username: 364632363@qq.com
+    password: utzsdqvrstrncafj #开启PoP3之后设置的客户授权码
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true #一定要开启ssl,不然会503 验证失败的

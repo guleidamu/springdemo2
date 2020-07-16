@@ -1,0 +1,57 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /api #请求路径得添加这个
+
+#spring:
+#      #通用的数据源配置
+#      datasource:
+#        driverClassName: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/myschool?useSSL=false&useUnicode=true&characterEncoding=utf8
+#      username: root
+#      password: root
+spring:
+  application:
+#    name: spring-jpa
+    name: business-school
+  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+    first:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: root
+      url: jdbc:mysql://127.0.0.1:3306/myschool?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    second:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: root
+        url: jdbc:mysql://127.0.0.1:3306/springcloud?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+  jpa:
+    #这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    #配置在日志中打印出执行的 SQL 语句信息。
+    show-sql: true
+    hibernate:
+      #配置指明在程序启动的时候要删除并且创建实体类对应的表
+#      ddl-auto: create
+
+#Eureka服务注册中心也会将自己作为客户端来尝试注册它自己，所以我们需要禁用它的客户端注册行为。
+eureka:
+  instance:
+    prefer-ip-address: true
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+
+
+
+redis:
+  #  host: 192.168.43.132
+
+  host: 127.0.0.1
+  port: 6379
+  timeout: 10
+  databases: 8
+  pool-max-total: 1000
+  pool-max-idle: 500
+  pool-max-wait: 500

@@ -1,0 +1,27 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config
+  main:
+    allow-bean-definition-overriding: true
+
+  profiles:
+    active: native #active配置选择厦门的cloud.config.server.get或者cloud.config.server.native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/{profile} #{profile} maps to "spring.profiles.active" on the client (comma separated list); and
+        git:
+          uri:
+
+eureka:
+  instance:
+    prefer-ip-address: true #访问路劲可以显示ip地址
+    instance-id: ${spring.application.name}:${server.port} #自定义服务名称信息
+  client:
+    service-url:
+      defaultZone: http://sct-eureka8002:8002/eureka/,http://sct-eureka:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
