@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ca76949-35bd-4ddd-8fc7-bfc0c0fc07c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/learnModel/src/main/java/MD5/MD5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/learnModel/src/main/java/MD5/MD5T.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springboot-mq-demo/src/main/java/com/example/springbootmqdemo/controller/MQController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnModel/src/main/java/Daily/work/QueryAntiFraud.java" beforeDir="false" afterPath="$PROJECT_DIR$/learnModel/src/main/java/Daily/work/QueryAntiFraud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learnModel/target/classes/Daily/work/QueryAntiFraud.class" beforeDir="false" afterPath="$PROJECT_DIR$/learnModel/target/classes/Daily/work/QueryAntiFraud.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mq_demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mq_demo/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mq-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mq-demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mq-demo/src/main/java/com/example/springbootmqdemo/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mq-demo/src/main/java/com/example/springbootmqdemo/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-mq-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-mq-demo/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -140,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/learnModel/src/main/java/MD5/MD5T.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="183">
+              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -371,7 +362,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594967550678" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1594967954581" />
     <property name="last_opened_file_path" value="E:/svn3/trunk" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -379,7 +370,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -986,7 +977,7 @@
       <workItem from="1594861280107" duration="11244000" />
       <workItem from="1594879473467" duration="12058000" />
       <workItem from="1594947305957" duration="6522000" />
-      <workItem from="1594966220316" duration="1329000" />
+      <workItem from="1594966220316" duration="1890000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1568644092605</created>
@@ -1163,7 +1154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594881614079</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="添加范例">
+      <created>1594967705175</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1594967705175</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1199,7 +1197,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1301537000" />
+    <option name="totallyTimeSpent" value="1302098000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1212,7 +1210,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="243" y="5" width="1029" height="678" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -1227,12 +1224,12 @@
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.70434785" side_tool="true" weight="0.34545454" />
       <window_info anchor="bottom" id="Java Enterprise" order="3" weight="0.32692307" />
       <window_info anchor="bottom" id="Database Changes" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.33041957" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="5" visible="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Spring" order="6" weight="0.32867134" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.67153287" />
       <window_info anchor="bottom" id="Run" order="9" weight="0.3858998" />
-      <window_info active="true" anchor="bottom" id="Debug" order="10" visible="true" weight="0.4084249" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.4084249" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="13" weight="0.32867134" />
@@ -2069,8 +2066,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/learnModel/src/main/java/MD5/MD5T.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="183">
+          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
