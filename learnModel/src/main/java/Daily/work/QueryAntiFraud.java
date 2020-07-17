@@ -312,7 +312,7 @@ public class QueryAntiFraud {
 
         String url = BspAPI.makeURL("GET", "QueryAntiFraud", "ap-shanghai", SECRET_ID, SECRET_KEY, "2020-02-26",args, "utf-8");
         System.out.println(url);
-//        ApiResponse res = ApiRequest.sendGet(url, "");
-//        System.out.println(res.getBody());
+        ApiResponse res = ApiRequest.sendGet(url, "");
+        System.out.println(res.getBody());
     }
 }
